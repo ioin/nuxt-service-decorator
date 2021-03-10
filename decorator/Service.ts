@@ -40,6 +40,7 @@ function Service(...services: any[]) {
             VueComponent.options.computed[serviceName] = {
                 get() {
                     service.$axios = this.$axios;
+                    service.$store = this.$store;
                     return service;
                 }
             }
