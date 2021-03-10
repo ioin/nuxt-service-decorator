@@ -1,0 +1,23 @@
+{
+  "name": "nuxt-service-decorator",
+  "version": "1.0.0",
+  "description": "this a decorator for nuxtjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ioin/nuxt-service-decorator.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ioin/nuxt-service-decorator/issues"
+  },
+  "homepage": "https://github.com/ioin/nuxt-service-decorator#readme",
+  "dependencies": {
+    "vue": "^2.6.12"
+  }
+}
