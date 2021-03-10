@@ -1,18 +1,14 @@
 /**
- *  用于函数上的基础传播参数
- *  适用于没用return值时，将当前的参数列表作为返回值而传递
- * @param name 
- * @param defaultValue 
+ *  used by send param if you return nothing in function
+ * @param name send param name
+ * @param defaultValue  default value
  * @returns 
  */
 export default function Param(name: string, defaultValue?: any) {
-    return function (target: FunctionConstructor, methodName: string, index: number) {
+    return function (target: any, methodName: string, index: number) {
         const method = target[methodName];
         if (method.$sends || (method.$sends = [])) {
-            method.$sends.push([
-                name,
-                defaultValue
-            ])
+            method.$sends.push([name, defaultValue])
         }
     }
 }
