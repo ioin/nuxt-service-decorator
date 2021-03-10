@@ -2,15 +2,14 @@
  * register service error
  */
 class ServiceRegisterError extends Error {
-    name: string;
-    message: string = "ServiceRegisterError";
+    name: string = "ServiceRegisterError";
+    message: string;
 
     constructor(msg: string) {
         super();
         this.message = "Service regist error cause: " + msg;
     }
 }
-
 
 /**
  * register some services to current VueComponent
