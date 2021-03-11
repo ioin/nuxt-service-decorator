@@ -8,7 +8,7 @@ export default function Param(name: string, defaultValue?: any) {
     return function (target: any, methodName: string, index: number) {
         const method = target[methodName];
         if (method.$sends || (method.$sends = [])) {
-            method.$sends.push({ name, defaultValue })
+            method.$sends[index] = { name, defaultValue }
         }
     }
 }

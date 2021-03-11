@@ -1,4 +1,4 @@
-import { MethodConfig, Send, ServiceModule, Store } from "./types/ServiceTypes";
+import { AxiosRequest, MethodConfig, Send, ServiceModule, Store } from "./types/ServiceTypes";
 import { isObject, urlJoin } from './utils'
 
 
@@ -23,7 +23,6 @@ function checkParams(this: ServiceModule, callArgs: any[], rtnParams?: any, send
     })
 
     // set form store where not in requestParam
-
     store.forEach(({ name, keyChain, storeKey, defaultValue }) => {
         let state = this.$store.state;
         state = keyChain.reduce((state, keyname) => {
@@ -44,7 +43,7 @@ function checkParams(this: ServiceModule, callArgs: any[], rtnParams?: any, send
 
 
 
-function Request(url: string = "") {
+function Request(url: string = "", doRequest: AxiosRequest) {
     return function ReuqestDepercator(service: ServiceModule, methodName: string, descriptor: PropertyDescriptor) {
         let _method = descriptor.value;
         let _methodConfig: MethodConfig = _method.$config ?? {};
@@ -62,8 +61,14 @@ function Request(url: string = "") {
 
             rtnParams = checkParams.call(this, callArgs, rtnParams, _method.$sends, _method.$store)
 
-
-
+            try {
+                return doRequest(this.$axios, requestUrl, rtnParams)
+            } catch (err) {
+                return err.response?.data ?? {
+                    code: "REQUEST_ILLEGALE",
+                    msg: err.message
+                }
+            }
         }
     }
 }

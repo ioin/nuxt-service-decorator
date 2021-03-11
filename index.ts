@@ -6,3 +6,7 @@ export { default as Get } from './decorator/methods/Get'
 export { default as Post } from './decorator/methods/Post'
 export { default as Service } from './decorator/Service'
 
+
+export default {
+
+}
