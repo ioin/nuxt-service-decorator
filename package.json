@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/ioin/nuxt-service-decorator#readme",
   "dependencies": {
-    "vue": "^2.6.12"
+    "axios": "^0.21.1",
+    "vue": "^2.6.12",
+    "vuex": "^3.6.2"
   }
 }
